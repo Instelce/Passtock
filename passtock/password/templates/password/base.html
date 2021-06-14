@@ -25,12 +25,22 @@
         
         <ul class="topbar__menu">
             <li><a href="#">Log In</a></li>
-            <li><a href="#" class="btn btn__small">Sign Up</a></li>
+            <li>
+                <button href="#" class="button button__small">
+                    <div class="button__bg"></div>
+                    <span>Sign Up</span>
+                </button>
+            </li>
         </ul>
     </nav>
 
     <div class="container">
         {% block content %}{% endblock content %}
     </div>
+
+    {# Script #}
+    <script src="https://kit.fontawesome.com/69fa013398.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'password/js/script.js' %}"></script>
 </body>
 </html>
