@@ -26,13 +26,19 @@
         <ul class="topbar__menu">
             <li><a href="#">Log In</a></li>
             <li>
-                <button href="#" class="button button__small">
+                <a href="{% url 'register' %}" class="button__small">
                     <div class="button__bg"></div>
                     <span>Sign Up</span>
-                </button>
+                </a>
             </li>
         </ul>
     </nav>
+
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
 
     <div class="container">
         {% block content %}{% endblock content %}

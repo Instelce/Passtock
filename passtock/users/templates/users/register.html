@@ -1,0 +1,40 @@
+{% extends 'password/base.html' %}
+
+{% block content %}
+    <div class="form__container">
+        <form method="POST">
+            {% csrf_token %}
+            <h3 class="form__title">Sign Up</h3>
+            {% comment %}{{ form.as_p }}{% endcomment %}
+            <fieldset class="field">
+                <label for="name">Name</label>
+                {{ form.username }}
+                {% comment %}<input name="name" id="name" type="text">{% endcomment %}
+            </fieldset>
+            <fieldset class="field">
+                <label for="email">Email</label>
+                {{ form.email }}
+                {% comment %}<input name="email" id="email" type="text">{% endcomment %}
+            </fieldset>
+            <fieldset class="field">
+                <label for="password1">Password</label>
+                {{ form.password1 }}
+                {% comment %}<input name="password1" id="password1" type="password">{% endcomment %}
+            </fieldset>
+            <fieldset class="field">
+                <label for="password2">Password Confirmation</label>
+                {{ form.password2 }}
+                {% comment %}<input name="password2" id="password2" type="password">{% endcomment %}
+            </fieldset>
+            <fieldset class="form__submit">
+                <button class="button__form" type="submit">
+                    <div class="button__bg"></div>
+                    <span>Sign Up</span>
+                </button>
+            </fieldset>
+            <fieldset>
+                <small>Already have an account ? <a href="#" class="link">Log In</a></small>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

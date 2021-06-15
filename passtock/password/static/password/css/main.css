@@ -20,7 +20,7 @@ p {
   padding: 0 14%;
 }
 
-.button {
+.button__small, .button__form, .button__primary {
   margin: 0;
   padding: 0;
   position: relative;
@@ -29,28 +29,25 @@ p {
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  color: #CFDBD5;
+  color: inherit;
   background: none;
-  border: 1px solid #333533;
   border-radius: 5px;
 }
-.button .button__bg {
+.button__small .button__bg, .button__form .button__bg, .button__primary .button__bg {
   top: 0;
   left: 0;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: transparent;
   border-radius: inherit;
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
 }
-.button .button__bg::before, .button .button__bg::after {
+.button__small .button__bg::before, .button__form .button__bg::before, .button__primary .button__bg::before, .button__small .button__bg::after, .button__form .button__bg::after, .button__primary .button__bg::after {
   content: "";
   position: absolute;
-  background: #333533;
 }
-.button .button__bg::before {
+.button__small .button__bg::before, .button__form .button__bg::before, .button__primary .button__bg::before {
   width: 110%;
   height: 0;
   padding-bottom: 110%;
@@ -59,7 +56,7 @@ p {
   border-radius: 50%;
   transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1);
 }
-.button .button__bg::after {
+.button__small .button__bg::after, .button__form .button__bg::after, .button__primary .button__bg::after {
   top: 0;
   left: 0;
   width: 100%;
@@ -67,30 +64,83 @@ p {
   opacity: 0;
   transition: opacity 0.3s;
 }
-.button:hover .button__bg::before {
+.button__small:hover .button__bg::before, .button__form:hover .button__bg::before, .button__primary:hover .button__bg::before {
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
   transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
 }
-.button:hover .button__bg::after {
+.button__small:hover .button__bg::after, .button__form:hover .button__bg::after, .button__primary:hover .button__bg::after {
   opacity: 1;
   transition-duration: 0.01s;
   transition-delay: 0.3s;
 }
-.button span {
+.button__small span, .button__form span, .button__primary span {
   position: relative;
   padding: 0.8rem 2rem;
   display: flex;
   align-items: center;
-  color: #CFDBD5;
+  text-align: center;
   transition: color 0.3s;
 }
-.button:hover span {
+.button__small i, .button__form i, .button__primary i {
+  margin-left: 10px;
+}
+
+.button__primary {
+  color: #CFDBD5;
+  border: 1px solid #333533;
+}
+.button__primary .button__bg {
+  background: transparent;
+}
+.button__primary .button__bg::after, .button__primary .button__bg::before {
+  background: #333533;
+}
+.button__primary:hover span {
   color: #F5CB5C;
 }
 
+.button__form {
+  width: 100%;
+  color: #242423;
+  border: 1px solid #242423;
+}
+.button__form .button__bg {
+  background: transparent;
+}
+.button__form .button__bg::after, .button__form .button__bg::before {
+  background: #242423;
+}
+.button__form span {
+  display: inline-block;
+}
+.button__form:hover span {
+  color: #F5CB5C;
+}
+
+.button__small {
+  color: #CFDBD5;
+  border: 1px solid #333533;
+}
+.button__small .button__bg {
+  background: transparent;
+}
+.button__small .button__bg::after, .button__small .button__bg::before {
+  background: #333533;
+}
 .button__small span {
   padding: 0.5rem 1rem;
   font-weight: 200;
+}
+.button__small:hover span {
+  color: #F5CB5C;
+}
+
+.link {
+  color: #F5CB5C;
+  transition: color 0.3s;
+}
+.link:hover {
+  color: #f3db97;
 }
 
 .topbar {
@@ -129,7 +179,7 @@ p {
 }
 .topbar .topbar__menu a {
   position: relative;
-  margin: 0 40px;
+  margin: 0 20px;
   color: #E8EDDF;
   font-weight: 300;
   transition: color 0.3s;
@@ -156,9 +206,6 @@ p {
 #home p {
   margin-bottom: 20px;
 }
-#home i {
-  margin-left: 10px;
-}
 #home .bubble {
   width: 100%;
   height: 100%;
@@ -175,6 +222,91 @@ p {
   right: 0;
   transform: translate(35%, 35%);
   position: absolute;
+}
+
+.form__container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  padding: 20px 60px;
+  background: #333533;
+  border-radius: 5px;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.field {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+.field input {
+  width: 100%;
+  padding: 0.8rem 2rem;
+  outline: none;
+  background: #333533;
+  border: 1px solid #242423;
+  border-radius: 5px;
+  color: #F5CB5C;
+  transition: background-color 0.3s;
+}
+.field input:focus {
+  background: #242423;
+}
+.field label {
+  display: inline-block;
+  color: #242423;
+  transition: top 0.3s;
+}
+
+.form__title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #CFDBD5;
+  text-transform: uppercase;
+}
+
+.form__submit {
+  margin: 10px 0;
+  padding: 20px 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.form__submit::before {
+  width: 80%;
+  height: 1px;
+  top: 0;
+  position: absolute;
+  content: "";
+  background: #242423;
+}
+.form__submit::after {
+  width: 80%;
+  height: 1px;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  background: #242423;
+}
+
+small {
+  display: block;
+  text-align: center;
+  color: #242423;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=main.css.map */
