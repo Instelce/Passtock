@@ -1,0 +1,11 @@
+{% extends 'password/base.html' %}
+
+{% block content %}
+    <section id="profile">
+        <div class="profile__info">
+            <img src="{{ user.profile.image.url }}">
+            <h1>{{ user.username }}</h1>
+            <p>{{ user.email }}</p>
+        </div>
+    </section>
+{% endblock content %}

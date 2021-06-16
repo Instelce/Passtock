@@ -31,10 +31,16 @@ p {
     font-weight: 200;
 }
 
+h1 {
+    font-size: 2rem;
+    color: $color-timberwolf;
+    font-weight: 700;
+}
+
 .container {
     height: auto;
     position: relative;
-    padding: 0 $padding-vertical;
+    padding: 20px $padding-vertical;
 }
 
 // Button
@@ -172,11 +178,31 @@ p {
 
 // Link
 .link {
+    position: relative;
     color: $color-maize-crayola;
+
     transition: color 0.3s;
+
+    &::after {
+        width: 100%;
+        height: 0.6px;
+        top: 100%; left: 0;
+        position: absolute;
+        content: "";
+
+        background: $color-maize-crayola;
+
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s;
+    }
 
     &:hover {
         color: #f3db97;
+        &::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
     }
 }
 
@@ -223,13 +249,96 @@ p {
         align-items: center;
 
         a {
+            margin-left: 40px;
             position: relative;
-            margin: 0 20px;
             color: $color-alabaster;
             font-weight: 300;
             transition: color 0.3s;
 
             &:hover { color: $color-maize-crayola; }
+        }
+
+        .user__dropdown {
+            position: relative;
+
+            & > a {
+                margin: 0 40px;
+                width: 40px;
+                height: 40px;
+                position: relative;
+                overflow: hidden;
+                border-radius: 99px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 99px;
+            }
+
+            .dropdown {
+                width: auto;
+                right: 0;
+                position: absolute;
+                overflow: hidden;
+                z-index: 2;
+
+                border-radius: 5px;
+                border: 1px solid $color-jet;
+                opacity: 0;
+
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                margin-top: 2rem;
+
+                transform: translateY(-10%);
+                transition: opacity .3s ease-out, transform 0.3s;
+
+                a {
+                    width: 100%;
+                    padding: 0.8rem 2rem;
+                    margin: 0;
+                    position: relative;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    background: $color-jet;
+
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background: $color-erie-black;
+                    }
+                }
+            }
+
+            i {
+                padding-right: 10px;
+                margin-right: 5px;
+                position: relative;
+
+                &::after {
+                    width: 1px;
+                    height: 100%;
+                    right: 0;
+                    top: 0;
+                    position: absolute;
+                    content: "";
+                    background: $color-timberwolf;
+                }
+            }
+
+            &:focus-within .dropdown   {
+                opacity: 1;
+                transform: translateY(0%);
+                pointer-events: auto;
+            }
         }
     }
 }
@@ -237,6 +346,7 @@ p {
 // Home Page Style
 #home {
     height: 90vh;
+    padding: 0 $padding-vertical;
 
     display: flex;
     align-items: center;
@@ -273,5 +383,25 @@ p {
    }
 }
 
+// Profile Page Style
+#profile {
+    padding: 20px $padding-vertical;
+
+    .profile__info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+    }
+}
+
 // Imports
-@import "form.scss";
+@import "form";
+@import "notifications";

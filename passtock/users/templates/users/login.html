@@ -4,32 +4,25 @@
     <div class="form__container">
         <form method="POST">
             {% csrf_token %}
-            <h3 class="form__title">Sign Up</h3>
+            <h3 class="form__title">Login</h3>
             <fieldset class="field">
                 <label for="name">Name</label>
                 {{ form.username }}
-            </fieldset>
-            <fieldset class="field">
-                <label for="email">Email</label>
-                {{ form.email }}
+                {{ form.username.errors }}
             </fieldset>
             <fieldset class="field">
                 <label for="password1">Password</label>
-                {{ form.password1 }}
-            </fieldset>
-            <fieldset class="field">
-                <label for="password2">Password Confirmation</label>
-                {{ form.password2 }}
-                {{ form.password2.errors }}
+                {{ form.password }}
+                {{ form.password.errors }}
             </fieldset>
             <fieldset class="form__submit">
                 <button class="button__form" type="submit">
                     <div class="button__bg"></div>
-                    <span>Create Account</span>
+                    <span>Login</span>
                 </button>
             </fieldset>
             <fieldset>
-                <small>Already have an account ? <a href="{% url 'login' %}" class="link">Login</a></small>
+                <small>Doesn't have an account ? <a href="{% url 'register' %}" class="link">Sign Up</a></small>
             </fieldset>
         </form>
     </div>

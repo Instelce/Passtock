@@ -14,10 +14,16 @@ p {
   font-weight: 200;
 }
 
+h1 {
+  font-size: 2rem;
+  color: #CFDBD5;
+  font-weight: 700;
+}
+
 .container {
   height: auto;
   position: relative;
-  padding: 0 14%;
+  padding: 20px 14%;
 }
 
 .button__small, .button__form, .button__primary {
@@ -136,11 +142,28 @@ p {
 }
 
 .link {
+  position: relative;
   color: #F5CB5C;
   transition: color 0.3s;
 }
+.link::after {
+  width: 100%;
+  height: 0.6px;
+  top: 100%;
+  left: 0;
+  position: absolute;
+  content: "";
+  background: #F5CB5C;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
 .link:hover {
   color: #f3db97;
+}
+.link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .topbar {
@@ -178,8 +201,8 @@ p {
   align-items: center;
 }
 .topbar .topbar__menu a {
+  margin-left: 40px;
   position: relative;
-  margin: 0 20px;
   color: #E8EDDF;
   font-weight: 300;
   transition: color 0.3s;
@@ -187,9 +210,78 @@ p {
 .topbar .topbar__menu a:hover {
   color: #F5CB5C;
 }
+.topbar .topbar__menu .user__dropdown {
+  position: relative;
+}
+.topbar .topbar__menu .user__dropdown > a {
+  margin: 0 40px;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topbar .topbar__menu .user__dropdown img {
+  width: 40px;
+  height: 40px;
+  border-radius: 99px;
+}
+.topbar .topbar__menu .user__dropdown .dropdown {
+  width: auto;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 5px;
+  border: 1px solid #333533;
+  opacity: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  margin-top: 2rem;
+  transform: translateY(-10%);
+  transition: opacity 0.3s ease-out, transform 0.3s;
+}
+.topbar .topbar__menu .user__dropdown .dropdown a {
+  width: 100%;
+  padding: 0.8rem 2rem;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333533;
+  transition: background-color 0.3s;
+}
+.topbar .topbar__menu .user__dropdown .dropdown a:hover {
+  background: #242423;
+}
+.topbar .topbar__menu .user__dropdown i {
+  padding-right: 10px;
+  margin-right: 5px;
+  position: relative;
+}
+.topbar .topbar__menu .user__dropdown i::after {
+  width: 1px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  content: "";
+  background: #CFDBD5;
+}
+.topbar .topbar__menu .user__dropdown:focus-within .dropdown {
+  opacity: 1;
+  transform: translateY(0%);
+  pointer-events: auto;
+}
 
 #home {
   height: 90vh;
+  padding: 0 14%;
   display: flex;
   align-items: center;
 }
@@ -224,15 +316,33 @@ p {
   position: absolute;
 }
 
+#profile {
+  padding: 20px 14%;
+}
+#profile .profile__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#profile .profile__info img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
 .form__container {
   width: 100%;
   height: 90vh;
+  padding: 20px 14%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 form {
+  min-width: 40%;
   padding: 20px 60px;
   background: #333533;
   border-radius: 5px;
@@ -307,6 +417,50 @@ small {
   text-align: center;
   color: #242423;
   font-size: 14px;
+}
+
+.errorlist {
+  margin-top: 10px;
+  color: #f25c54;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.notification {
+  padding: 20px 40px;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+  border-radius: 5px;
+  transform: translateX(110%);
+  animation: toPage 0.3s forwards, exitPage 0.3s 4s forwards;
+  transition: transform 0.3s;
+}
+.notification span {
+  color: #242423;
+  font-weight: 500;
+}
+
+.mes-success {
+  background: linear-gradient(300deg, #57cc99 0%, #80ed99 100%);
+}
+
+@keyframes toPage {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes exitPage {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(110%);
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

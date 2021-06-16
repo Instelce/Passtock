@@ -1,6 +1,7 @@
 .form__container {
   width: 100%;
   height: 90vh;
+  padding: 20px $padding-vertical;
 
   display: flex;
   align-items: center;
@@ -8,6 +9,7 @@
 }
 
 form {
+  min-width: 40%;
   padding: 20px 60px;
   background: $color-jet;
   border-radius: 5px;
@@ -92,4 +94,12 @@ small {
   text-align: center;
   color: $color-erie-black;
   font-size: 14px;
+}
+
+// Error Messages
+.errorlist {
+  margin-top: 10px;
+  color: #f25c54;
+  font-size: 14px;
+  font-weight: 300;
 }

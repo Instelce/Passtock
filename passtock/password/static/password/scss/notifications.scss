@@ -1,0 +1,42 @@
+.notification {
+  padding: 20px 40px;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+
+  border-radius: 5px;
+
+  transform: translateX(110%);
+  animation: toPage 0.3s forwards, exitPage 0.3s 4s forwards;
+
+  transition: transform 0.3s;
+
+  span {
+    color: $color-erie-black;
+    font-weight: 500;
+  }
+}
+
+.mes-success {
+  background: linear-gradient(300deg, rgba(87,204,153,1) 0%, rgba(128,237,153,1) 100%);
+}
+
+
+@keyframes toPage {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes exitPage {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(110%);
+    display: none;
+  }
+}

@@ -21,28 +21,49 @@
 </head>
 <body>
     <nav class="topbar">
-        <a href="{% url 'password:home' %}" class="topbar__brand">Passtock</a>
-        
+        {% if user.is_authenticated %}
+            <a href="{% url 'password:dashboard' %}" class="topbar__brand">Passtock</a>
+        {% else %}
+            <a href="{% url 'password:home' %}" class="topbar__brand">Passtock</a>
+        {% endif %}
+
         <ul class="topbar__menu">
-            <li><a href="#">Log In</a></li>
-            <li>
-                <a href="{% url 'register' %}" class="button__small">
-                    <div class="button__bg"></div>
-                    <span>Sign Up</span>
-                </a>
-            </li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="#" class="button__small">
+                        <div class="button__bg"></div>
+                        <span>Create password</span>
+                    </a>
+                </li>
+                <li class="user__dropdown">
+                    <a href="#"><img src="{{ user.profile.image.url }}"></a>
+                    <ul class="dropdown">
+                        <li><a href="{% url 'profile' %}"><i class="fas fa-user-alt"></i> Profile</a></li>
+                        <li><a href="{% url 'password:dashboard' %}"><i class="fas fa-columns"></i> Dashboard</a></li>
+                        <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li>
+                    <a href="{% url 'register' %}" class="button__small">
+                        <div class="button__bg"></div>
+                        <span>Sign Up</span>
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
 
     {% if messages %}
         {% for message in messages %}
-            {{ message }}
+            <div class="notification mes-{{ message.tags }}">
+                <span>{{ message }}</span>
+            </div>
         {% endfor %}
     {% endif %}
 
-    <div class="container">
-        {% block content %}{% endblock content %}
-    </div>
+    {% block content %}{% endblock content %}
 
     {# Script #}
     <script src="https://kit.fontawesome.com/69fa013398.js" crossorigin="anonymous"></script>
