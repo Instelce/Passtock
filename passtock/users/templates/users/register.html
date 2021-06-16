@@ -5,29 +5,30 @@
         <form method="POST">
             {% csrf_token %}
             <h3 class="form__title">Sign Up</h3>
-            <fieldset class="field">
-                <label for="name">Name</label>
+
+            <span class="field">
+                <label for="username">Username</label>
                 {{ form.username }}
-            </fieldset>
-            <fieldset class="field">
+            </span>
+            <span class="field">
                 <label for="email">Email</label>
                 {{ form.email }}
-            </fieldset>
-            <fieldset class="field">
+            </span>
+            <span class="field">
                 <label for="password1">Password</label>
                 {{ form.password1 }}
-            </fieldset>
-            <fieldset class="field">
-                <label for="password2">Password Confirmation</label>
+            </span>
+            <span class="field">
+                <label for="password2">Confirm Password</label>
                 {{ form.password2 }}
                 {{ form.password2.errors }}
-            </fieldset>
-            <fieldset class="form__submit">
+            </span>
+            <span class="form__submit">
                 <button class="button__form" type="submit">
                     <div class="button__bg"></div>
                     <span>Create Account</span>
                 </button>
-            </fieldset>
+            </span>
             <fieldset>
                 <small>Already have an account ? <a href="{% url 'login' %}" class="link">Login</a></small>
             </fieldset>

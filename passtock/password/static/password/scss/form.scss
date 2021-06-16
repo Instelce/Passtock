@@ -13,6 +13,9 @@ form {
   padding: 20px 60px;
   background: $color-jet;
   border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 fieldset {
@@ -22,7 +25,15 @@ fieldset {
   min-width: 0;
 }
 
-// Field
+.form__title {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $color-timberwolf;
+  text-transform: uppercase;
+}
+
 .field {
   width: 100%;
   margin-bottom: 20px;
@@ -30,7 +41,7 @@ fieldset {
 
   input {
     width: 100%;
-    padding: 0.8rem 2rem;
+    padding: 1rem 2rem;
 
     outline: none;
     background: $color-jet;
@@ -38,29 +49,51 @@ fieldset {
     border-radius: 5px;
 
     color: $color-maize-crayola;
+    font-size: 16px;
 
-    transition: background-color 0.3s;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid #f3db97;
+
+      ~label {
+        color: $color-timberwolf;
+      }
+    }
+
+    &:not(:placeholder-shown) {
+      ~label {
+        transform: translate3d(0,-12px,0) scale(.75)
+      }
+    }
 
     &:focus {
-      background: $color-erie-black;
+      border: 1px solid $color-maize-crayola;
+
+      ~label {
+        transform: translate3d(0,-12px,0) scale(.75)
+      }
+
+      &:invalid {
+        border: 1px solid #f25c54;
+      }
     }
   }
 
   label {
-    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    padding: 0 8px;
+
     color: $color-erie-black;
-    transition: top 0.3s;
+    font-weight: 200;
+    background: $color-jet;
+    border-radius: 99px;
+
+    transform: translate(0, -50%);
+
   }
-}
-
-
-.form__title {
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  color: $color-timberwolf;
-  text-transform: uppercase;
 }
 
 .form__submit {
@@ -79,6 +112,7 @@ fieldset {
     content: "";
     background: $color-erie-black;
   }
+
   &::after {
     width: 80%;
     height: 1px;

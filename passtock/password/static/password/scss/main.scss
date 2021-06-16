@@ -16,11 +16,6 @@ body {
     background: $color-erie-black;
 }
 
-//*:focus {
-//    outline: 1px solid $color-maize-crayola;
-//    outline-offset: 2px;
-//}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -271,6 +266,11 @@ h1 {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                transition: box-shadow 0.3s;
+
+                &:hover {
+                    box-shadow: 0 0 3px 3px $color-jet;
+                }
             }
 
             img {

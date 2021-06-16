@@ -223,6 +223,10 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: box-shadow 0.3s;
+}
+.topbar .topbar__menu .user__dropdown > a:hover {
+  box-shadow: 0 0 3px 3px #333533;
 }
 .topbar .topbar__menu .user__dropdown img {
   width: 40px;
@@ -346,6 +350,8 @@ form {
   padding: 20px 60px;
   background: #333533;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 fieldset {
@@ -355,6 +361,15 @@ fieldset {
   min-width: 0;
 }
 
+.form__title {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #CFDBD5;
+  text-transform: uppercase;
+}
+
 .field {
   width: 100%;
   margin-bottom: 20px;
@@ -362,30 +377,43 @@ fieldset {
 }
 .field input {
   width: 100%;
-  padding: 0.8rem 2rem;
+  padding: 1rem 2rem;
   outline: none;
   background: #333533;
   border: 1px solid #242423;
   border-radius: 5px;
   color: #F5CB5C;
-  transition: background-color 0.3s;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+.field input:hover {
+  border: 1px solid #f3db97;
+}
+.field input:hover ~ label {
+  color: #CFDBD5;
+}
+.field input:not(:placeholder-shown) ~ label {
+  transform: translate3d(0, -12px, 0) scale(0.75);
 }
 .field input:focus {
-  background: #242423;
+  border: 1px solid #F5CB5C;
+}
+.field input:focus ~ label {
+  transform: translate3d(0, -12px, 0) scale(0.75);
+}
+.field input:focus:invalid {
+  border: 1px solid #f25c54;
 }
 .field label {
-  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  padding: 0 8px;
   color: #242423;
-  transition: top 0.3s;
-}
-
-.form__title {
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #CFDBD5;
-  text-transform: uppercase;
+  font-weight: 200;
+  background: #333533;
+  border-radius: 99px;
+  transform: translate(0, -50%);
 }
 
 .form__submit {

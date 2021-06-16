@@ -5,16 +5,16 @@
         <form method="POST">
             {% csrf_token %}
             <h3 class="form__title">Login</h3>
-            <fieldset class="field">
-                <label for="name">Name</label>
+            <span class="field">
+                <label for="name">Username</label>
                 {{ form.username }}
                 {{ form.username.errors }}
-            </fieldset>
-            <fieldset class="field">
+            </span>
+            <san class="field">
                 <label for="password1">Password</label>
                 {{ form.password }}
                 {{ form.password.errors }}
-            </fieldset>
+            </san>
             <fieldset class="form__submit">
                 <button class="button__form" type="submit">
                     <div class="button__bg"></div>
