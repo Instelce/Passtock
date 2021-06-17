@@ -39,7 +39,9 @@ fieldset {
   margin-bottom: 20px;
   position: relative;
 
-  input {
+  input[type=text],
+  input[type=email],
+  input[type=password] {
     width: 100%;
     padding: 1rem 2rem;
 
@@ -55,28 +57,39 @@ fieldset {
 
     &:hover {
       border: 1px solid #f3db97;
-
-      ~label {
-        color: $color-timberwolf;
-      }
-    }
-
-    &:not(:placeholder-shown) {
-      ~label {
-        transform: translate3d(0,-12px,0) scale(.75)
-      }
     }
 
     &:focus {
       border: 1px solid $color-maize-crayola;
 
-      ~label {
-        transform: translate3d(0,-12px,0) scale(.75)
-      }
-
       &:invalid {
         border: 1px solid #f25c54;
       }
+    }
+  }
+
+  input[type=file] {
+    width: 100%;
+    padding: 1rem 2rem;
+
+    border: 1px solid $color-erie-black;
+    border-radius: 5px;
+    cursor: pointer;
+
+    color: $color-erie-black;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+
+    transition: border 0.3s;
+
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+      display: none;
+    }
+
+    &:hover {
+      border: 1px solid #f3db97;
     }
   }
 
@@ -92,7 +105,11 @@ fieldset {
     border-radius: 99px;
 
     transform: translate(0, -50%);
+    transition: color 0.3s;
+  }
 
+  &:hover label {
+    color: #f3db97;
   }
 }
 
