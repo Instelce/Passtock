@@ -117,6 +117,10 @@ h1 {
   i {
     margin-left: 10px;
   }
+
+  &.is_copy span {
+    color: rgba(87,204,153,1) !important;
+  }
 }
 
 .button__primary {
@@ -130,6 +134,26 @@ h1 {
     &::after,
     &::before {
       background: $color-jet;
+    }
+  }
+
+  &:hover span {
+    color: $color-maize-crayola
+  }
+}
+
+.button__rounded {
+  @extend %button;
+  color: $color-timberwolf;
+  border: 1px solid $color-erie-black;
+  border-radius: 99px;
+
+  .button__bg {
+    background: transparent;
+
+    &::after,
+    &::before {
+      background: $color-erie-black;
     }
   }
 
@@ -309,6 +333,7 @@ h1 {
 
         border-radius: 5px;
         border: 1px solid $color-jet;
+        box-shadow: 0 2px 4px 2px rgba(36, 36, 35, 0.6);
         opacity: 0;
 
         display: grid;
@@ -318,6 +343,7 @@ h1 {
 
         transform: translateY(-10%);
         transition: opacity .3s ease-out, transform 0.3s;
+        pointer-events: none;
 
         a {
           width: 100%;
@@ -466,8 +492,71 @@ h1 {
       }
     }
   }
+}
 
+// Dashboard
+#dashboard {
+  padding: 20px $padding-vertical;
 
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .password__item {
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-bottom: 20px;
+
+    background: $color-jet;
+    border-radius: 99px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .password__sitename {
+      color: $color-alabaster;
+    }
+
+    .password__right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .password__menu {
+      .menu__icon {
+        width: 40px;
+        height: 40px;
+        margin-left: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 99px;
+
+        color: $color-alabaster;
+        font-size: 20px;
+
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background: $color-erie-black;
+        }
+      }
+    }
+
+    textarea {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+  }
 }
 
 // Imports

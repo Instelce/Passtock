@@ -22,7 +22,7 @@
 <body>
     <nav class="topbar">
         {% if user.is_authenticated %}
-            <a href="{% url 'password:dashboard' %}" class="topbar__brand">Passtock</a>
+            <a href="{% url 'password:dashboard' user %}" class="topbar__brand">Passtock</a>
         {% else %}
             <a href="{% url 'password:home' %}" class="topbar__brand">Passtock</a>
         {% endif %}
@@ -30,7 +30,7 @@
         <ul class="topbar__menu">
             {% if user.is_authenticated %}
                 <li>
-                    <a href="#" class="button__small">
+                    <a href="{% url 'password:create' %}" class="button__small">
                         <div class="button__bg"></div>
                         <span>Create password</span>
                     </a>
@@ -39,7 +39,7 @@
                     <a href="#"><img src="{{ user.profile.image.url }}"></a>
                     <ul class="dropdown">
                         <li><a href="{% url 'profile' %}"><i class="fas fa-user-alt"></i> Profile</a></li>
-                        <li><a href="{% url 'password:dashboard' %}"><i class="fas fa-columns"></i> Dashboard</a></li>
+                        <li><a href="{% url 'password:dashboard' user %}"><i class="fas fa-columns"></i> Dashboard</a></li>
                         <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                     </ul>
                 </li>

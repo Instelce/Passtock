@@ -1,7 +1,26 @@
 {% extends 'password/base.html' %}
 
 {% block content %}
-    <section id="home">
+    <section id="dashboard">
+        {% if passwords %}
+            <h1>Your password</h1>
+            {% for password in passwords %}
+                <div class="password__item">
+                    <a class="password__sitename" href="{% url 'password:detail' password.owner password.id %}">{{ password.site_name }}</a>
+                    <div class="password__right">
+                        <a href="#" class="button__rounded" onclick="copyPassword('{{ password.site_name }}')" id="button{{ password.site_name }}">
+                            <div class="button__bg"></div>
+                            <span>Copy Password</span>
+                        </a>
+                        <textarea id="input{{ password.site_name }}">{{ password.password }}</textarea>
 
+                        <div class="password__menu">
+                            <div class="menu__icon"><i class="fas fa-ellipsis-v"></i></div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+        {% endif %}
     </section>
 {% endblock content %}
