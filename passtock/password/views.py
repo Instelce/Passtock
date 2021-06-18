@@ -4,7 +4,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.forms.models import model_to_dict
 from .models import Password
+import json
 
 
 def home(request):
@@ -15,6 +17,11 @@ class Dashboard(LoginRequiredMixin, ListView):
     model = Password
     template_name = 'password/dashboard.html'
     context_object_name = 'passwords'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["pass_json"] = json.dumps(list(Password.objects.filter(owner=self.request.user).values()))
+        return context
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))

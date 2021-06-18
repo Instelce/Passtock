@@ -410,17 +410,33 @@ small {
 #dashboard {
   padding: 20px 14%;
 }
-#dashboard h1 {
-  text-align: center;
+#dashboard .dashboard__top {
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#dashboard .dashboard__top h1 {
+  margin-bottom: 20px;
+}
+#dashboard .dashboard__top .field {
+  width: 50%;
+}
+#dashboard .dashboard__top input {
+  text-align: center;
+}
+#dashboard p {
+  text-align: center;
   display: block;
 }
 #dashboard .password__item {
   width: 100%;
   padding: 1rem 2rem;
   margin-bottom: 20px;
+  position: relative;
   background: #333533;
   border-radius: 99px;
+  box-shadow: 0 4px 4px 2px #242423;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -478,6 +494,14 @@ small {
   margin-bottom: 20px;
 }
 
+#detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 14%;
+}
+
 .form__container {
   width: 100%;
   height: 90vh;
@@ -519,7 +543,8 @@ fieldset {
 }
 .field input[type=text],
 .field input[type=email],
-.field input[type=password] {
+.field input[type=password],
+.field input[type=search] {
   width: 100%;
   padding: 1rem 2rem;
   outline: none;
@@ -532,17 +557,20 @@ fieldset {
 }
 .field input[type=text]:hover,
 .field input[type=email]:hover,
-.field input[type=password]:hover {
+.field input[type=password]:hover,
+.field input[type=search]:hover {
   border: 1px solid #f3db97;
 }
 .field input[type=text]:focus,
 .field input[type=email]:focus,
-.field input[type=password]:focus {
+.field input[type=password]:focus,
+.field input[type=search]:focus {
   border: 1px solid #F5CB5C;
 }
 .field input[type=text]:focus:invalid,
 .field input[type=email]:focus:invalid,
-.field input[type=password]:focus:invalid {
+.field input[type=password]:focus:invalid,
+.field input[type=search]:focus:invalid {
   border: 1px solid #f25c54;
 }
 .field input[type=file] {

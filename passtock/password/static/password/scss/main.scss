@@ -525,9 +525,27 @@ small {
 #dashboard {
   padding: 20px $padding-vertical;
 
-  h1 {
-    text-align: center;
+  .dashboard__top {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .field {
+      width: 50%;
+    }
+
+    input {
+      text-align: center;
+    }
+  }
+
+  p {
+    text-align: center;
     display: block;
   }
 
@@ -535,9 +553,11 @@ small {
     width: 100%;
     padding: 1rem 2rem;
     margin-bottom: 20px;
+    position: relative;
 
     background: $color-jet;
     border-radius: 99px;
+    box-shadow: 0 4px 4px 2px $color-erie-black;
 
     display: flex;
     align-items: center;
@@ -607,6 +627,15 @@ small {
     filter: grayscale(100%);
     margin-bottom: 20px;
   }
+}
+
+// Detail
+#detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px $padding-vertical;
 }
 
 // Imports

@@ -4,24 +4,37 @@
 {% block content %}
     <section id="dashboard">
         {% if passwords %}
-            <h1>Your password</h1>
-            {% for password in passwords %}
-                <div class="password__item">
-                    <a class="password__sitename" href="{% url 'password:detail' password.owner password.id %}">{{ password.site_name }}</a>
-                    <div class="password__right">
-                        <a href="#" class="button__rounded" onclick="copyPassword('{{ password.site_name }}')" id="button{{ password.site_name }}">
-                            <div class="button__bg"></div>
-                            <span>Copy Password</span>
-                        </a>
-                        <textarea id="input{{ password.site_name }}">{{ password.password }}</textarea>
+            <div class="dashboard__top">
+                <h1>Your password</h1>
+                <div class="field">
+                    <input id="search" type="search" placeholder="Search password">
+                </div>
+            </div>
+            <div class="password__container">
+                {% for password in passwords %}
+                    <div class="password__item">
+                        <a class="password__sitename"
+                           href="{% url 'password:detail' password.owner password.id %}">{{ password.site_name }}</a>
+                        <div class="password__right">
+                            <a href="#" class="button__rounded" onclick="copyPassword('{{ password.site_name }}')"
+                               id="button{{ password.site_name }}">
+                                <div class="button__bg"></div>
+                                <span>Copy Password</span>
+                            </a>
+                            <textarea id="input{{ password.site_name }}">{{ password.password }}</textarea>
 
-                        <div class="password__menu">
-                            <a href="{% url 'password:update' password.owner password.id %}" class="menu__update"><i class="fas fa-pen"></i></a>
-                            <a href="{% url 'password:delete' password.owner password.id %}" class="menu__delete"><i class="fas fa-trash"></i></a>
+                            <div class="password__menu">
+                                <a href="{% url 'password:update' password.owner password.id %}" class="menu__update">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="{% url 'password:delete' password.owner password.id %}" class="menu__delete">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% else %}
             <div id="no-dashboard">
                 <img src="{% static 'password/images/empty-box.svg' %}">
@@ -34,3 +47,47 @@
         {% endif %}
     </section>
 {% endblock content %}
+
+{% block script %}
+    <script>
+        const data = '{{ pass_json }}'
+        const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
+        console.log(rdata)
+
+        const input = document.getElementById('search')
+        const passwordContainer = document.querySelector('.password__container')
+
+        let filteredArr = []
+
+        input.addEventListener('keyup', (e) => {
+            passwordContainer.innerHTML = ""
+            filteredArr = rdata.filter(info => info['site_name'].includes(e.target.value))
+
+            if (filteredArr.length > 0) {
+                filteredArr.map(info => {
+                    passwordContainer.innerHTML += `
+                        <div class="password__item">
+                            <a class="password__sitename" href="#">${info['site_name']}</a>
+                            <div class="password__right">
+                                <a href="" class="button__rounded" onclick="copyPassword('{{ password.site_name }}')" id="button{{ password.site_name }}">
+                                    <div class="button__bg"></div>
+                                    <span>Copy Password</span>
+                                </a>
+                                <textarea id="input{{ password.site_name }}">${info['password']}</textarea>
+
+                                <div class="password__menu">
+                                    <a href="#" class="menu__update"><i class="fas fa-pen"></i></a>
+                                    <a href="#" class="menu__delete"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                })
+            } else {
+                passwordContainer.innerHTML = `<p>No password found at ${input.value}</p>`
+            }
+
+
+        })
+    </script>
+{% endblock script %}
