@@ -107,11 +107,22 @@ fieldset {
 
     transform: translate(0, -50%);
     transition: color 0.3s;
+
+    &::after {
+      margin-left: 5px;
+      content: '*';
+      font-size: 14px;
+      color: $color-erie-black;
+    }
   }
 
   &:hover label {
     color: #f3db97;
   }
+}
+
+.field.not-required label::after {
+  content: none;
 }
 
 .form__submit {
