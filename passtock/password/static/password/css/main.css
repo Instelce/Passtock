@@ -160,7 +160,7 @@ small {
   background: #F25C54;
 }
 .button__danger span {
-  display: inline-block;
+  display: block;
 }
 .button__danger:hover span {
   color: #242423;
@@ -501,6 +501,10 @@ small {
   flex-direction: column;
   padding: 20px 14%;
 }
+#detail img {
+  width: 200px;
+  margin-bottom: 20px;
+}
 
 .form__container {
   width: 100%;
@@ -668,6 +672,7 @@ fieldset {
   bottom: 20px;
   right: 20px;
   position: fixed;
+  z-index: 100;
   border-radius: 5px;
   transform: translateX(110%);
   animation: toPage 0.3s forwards, exitPage 0.3s 4s forwards;

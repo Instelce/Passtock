@@ -52,7 +52,6 @@
     <script>
         const data = '{{ pass_json }}'
         const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
-        console.log(rdata)
 
         const input = document.getElementById('search')
         const passwordContainer = document.querySelector('.password__container')
@@ -86,8 +85,6 @@
             } else {
                 passwordContainer.innerHTML = `<p>No password found at ${input.value}</p>`
             }
-
-
         })
     </script>
 {% endblock script %}

@@ -36,7 +36,7 @@ class PasswordDetailView(LoginRequiredMixin, DetailView):
 class PasswordCreateView(LoginRequiredMixin, CreateView):
     model = Password
     template_name = 'password/password_create_form.html'
-    fields = ['site_name', 'email', 'password']
+    fields = ['site_name', 'email', 'password', 'image_url']
     extra_context = {'title': 'Create'}
 
     def get_success_url(self):
@@ -52,7 +52,7 @@ class PasswordCreateView(LoginRequiredMixin, CreateView):
 class PasswordUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Password
     template_name = 'password/password_update_form.html'
-    fields = ['site_name', 'email', 'password']
+    fields = ['site_name', 'email', 'password', 'image_url']
     extra_context = {'title': 'Update'}
 
     def get_success_url(self):

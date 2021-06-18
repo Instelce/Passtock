@@ -210,7 +210,7 @@ small {
   }
 
   span {
-    display: inline-block;
+    display: block;
   }
 
   &:hover span {
@@ -636,6 +636,11 @@ small {
   justify-content: center;
   flex-direction: column;
   padding: 20px $padding-vertical;
+
+  img {
+    width: 200px;
+    margin-bottom: 20px;
+  }
 }
 
 // Imports
