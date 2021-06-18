@@ -38,9 +38,18 @@
                 <li class="user__dropdown">
                     <a href="#"><img src="{{ user.profile.image.url }}"></a>
                     <ul class="dropdown">
-                        <li><a href="{% url 'profile' %}"><i class="fas fa-user-alt"></i> Profile</a></li>
-                        <li><a href="{% url 'password:dashboard' user %}"><i class="fas fa-columns"></i> Dashboard</a></li>
-                        <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                        <li><a href="{% url 'password:dashboard' user %}">
+                            <i class="fas fa-columns"></i>
+                            <span>Dashboard</span>
+                        </a></li>
+                        <li><a href="{% url 'profile' %}">
+                            <i class="fas fa-user-alt"></i>
+                            <span>Profile</span>
+                        </a></li>
+                        <li><a href="{% url 'logout' %}">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a></li>
                     </ul>
                 </li>
             {% else %}

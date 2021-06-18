@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 
@@ -19,6 +21,12 @@ def register(request):
     return render(request, 'users/register.html', {'form': form, 'title': 'Sign Up'})
 
 
+class Login(LoginView):
+    def get_success_url(self):
+        user = self.request.user
+        return reverse('password:dashboard', kwargs={'username': user})
+
+
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -28,7 +36,7 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, f'Your account has been update')
+            messages.success(request, f'Your account has been updated')
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)

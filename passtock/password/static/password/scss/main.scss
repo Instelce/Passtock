@@ -5,6 +5,7 @@ $color-timberwolf: #CFDBD5;
 $color-maize-crayola: #F5CB5C;
 $color-jet: #333533;
 $color-erie-black: #242423;
+$color-fire-opal: #F25C54;
 
 $padding-vertical: 14%;
 
@@ -30,6 +31,13 @@ h1 {
   font-size: 2rem;
   color: $color-timberwolf;
   font-weight: 700;
+}
+
+small {
+  display: block;
+  text-align: center;
+  color: $color-erie-black;
+  font-size: 14px;
 }
 
 .container {
@@ -119,7 +127,7 @@ h1 {
   }
 
   &.is_copy span {
-    color: rgba(87,204,153,1) !important;
+    color: rgba(87, 204, 153, 1) !important;
   }
 }
 
@@ -178,11 +186,35 @@ h1 {
   }
 
   span {
-    display: inline-block;
+    display: block;
   }
 
   &:hover span {
     color: $color-maize-crayola
+  }
+}
+
+.button__danger {
+  @extend %button;
+  width: 100%;
+  color: $color-fire-opal;
+  border: 1px solid $color-fire-opal;
+
+  .button__bg {
+    background: transparent;
+
+    &::after,
+    &::before {
+      background: $color-fire-opal;
+    }
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  &:hover span {
+    color: $color-erie-black;
   }
 }
 
@@ -332,7 +364,7 @@ h1 {
         z-index: 2;
 
         border-radius: 5px;
-        border: 1px solid $color-jet;
+        //border: 1px solid $color-jet;
         box-shadow: 0 2px 4px 2px rgba(36, 36, 35, 0.6);
         opacity: 0;
 
@@ -347,13 +379,12 @@ h1 {
 
         a {
           width: 100%;
-          padding: 0.8rem 2rem;
           margin: 0;
           position: relative;
 
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: space-between;
 
           background: $color-jet;
 
@@ -362,22 +393,18 @@ h1 {
           &:hover {
             background: $color-erie-black;
           }
-        }
-      }
 
-      i {
-        padding-right: 10px;
-        margin-right: 5px;
-        position: relative;
+          span {
+            padding: 0.8rem 1rem;
+          }
 
-        &::after {
-          width: 1px;
-          height: 100%;
-          right: 0;
-          top: 0;
-          position: absolute;
-          content: "";
-          background: $color-timberwolf;
+          i {
+            height: 100%;
+            padding: 0.8rem 1rem 1rem 1rem;
+            margin-right: 10px;
+            position: relative;
+            display: inline-block;
+          }
         }
       }
 
@@ -527,7 +554,10 @@ h1 {
     }
 
     .password__menu {
-      .menu__icon {
+      display: flex;
+
+      .menu__delete,
+      .menu__update {
         width: 40px;
         height: 40px;
         margin-left: 20px;
@@ -540,13 +570,19 @@ h1 {
 
         color: $color-alabaster;
         font-size: 20px;
+        background: transparent;
 
-        cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background 0.3s, transform 0.3s;
+      }
 
-        &:hover {
-          background: $color-erie-black;
-        }
+      .menu__delete:hover {
+        background: linear-gradient(60deg, #f27059 0%, #f25c54 100%);
+        transform: scale(1.1) translateZ(0);
+      }
+
+      .menu__update:hover {
+        background: linear-gradient(60deg, #00b4d8 0%, #0096c7 100%);
+        transform: scale(1.1) translateZ(0);
       }
     }
 
@@ -556,6 +592,20 @@ h1 {
       overflow: hidden;
       z-index: -1;
     }
+  }
+}
+
+#no-dashboard {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  img {
+    width: 300px;
+    filter: grayscale(100%);
+    margin-bottom: 20px;
   }
 }
 

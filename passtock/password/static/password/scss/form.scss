@@ -114,8 +114,31 @@ fieldset {
 }
 
 .form__submit {
-  margin: 10px 0;
-  padding: 20px 0;
+  margin-top: 10px;
+  padding-top: 20px;
+  position: relative;
+
+  &::before {
+    width: 80%;
+    height: 1px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    content: "";
+    background: $color-erie-black;
+  }
+}
+
+.two__button {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+}
+
+.form__footer {
+  margin-top: 20px;
+  padding-top: 20px;
   position: relative;
 
   display: flex;
@@ -129,23 +152,8 @@ fieldset {
     content: "";
     background: $color-erie-black;
   }
-
-  &::after {
-    width: 80%;
-    height: 1px;
-    bottom: 0;
-    position: absolute;
-    content: "";
-    background: $color-erie-black;
-  }
 }
 
-small {
-  display: block;
-  text-align: center;
-  color: $color-erie-black;
-  font-size: 14px;
-}
 
 // Error Messages
 .errorlist {

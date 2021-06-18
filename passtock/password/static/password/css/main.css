@@ -20,13 +20,20 @@ h1 {
   font-weight: 700;
 }
 
+small {
+  display: block;
+  text-align: center;
+  color: #242423;
+  font-size: 14px;
+}
+
 .container {
   height: auto;
   position: relative;
   padding: 20px 14%;
 }
 
-.button__small, .button__form, .button__rounded, .button__primary {
+.button__small, .button__danger, .button__form, .button__rounded, .button__primary {
   margin: 0;
   padding: 0;
   position: relative;
@@ -39,7 +46,7 @@ h1 {
   background: none;
   border-radius: 5px;
 }
-.button__small .button__bg, .button__form .button__bg, .button__rounded .button__bg, .button__primary .button__bg {
+.button__small .button__bg, .button__danger .button__bg, .button__form .button__bg, .button__rounded .button__bg, .button__primary .button__bg {
   top: 0;
   left: 0;
   position: absolute;
@@ -49,11 +56,11 @@ h1 {
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
 }
-.button__small .button__bg::before, .button__form .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before, .button__small .button__bg::after, .button__form .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
+.button__small .button__bg::before, .button__danger .button__bg::before, .button__form .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before, .button__small .button__bg::after, .button__danger .button__bg::after, .button__form .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
   content: "";
   position: absolute;
 }
-.button__small .button__bg::before, .button__form .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before {
+.button__small .button__bg::before, .button__danger .button__bg::before, .button__form .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before {
   width: 110%;
   height: 0;
   padding-bottom: 110%;
@@ -62,7 +69,7 @@ h1 {
   border-radius: 50%;
   transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1);
 }
-.button__small .button__bg::after, .button__form .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
+.button__small .button__bg::after, .button__danger .button__bg::after, .button__form .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
   top: 0;
   left: 0;
   width: 100%;
@@ -70,16 +77,16 @@ h1 {
   opacity: 0;
   transition: opacity 0.3s;
 }
-.button__small:hover .button__bg::before, .button__form:hover .button__bg::before, .button__rounded:hover .button__bg::before, .button__primary:hover .button__bg::before {
+.button__small:hover .button__bg::before, .button__danger:hover .button__bg::before, .button__form:hover .button__bg::before, .button__rounded:hover .button__bg::before, .button__primary:hover .button__bg::before {
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
   transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
 }
-.button__small:hover .button__bg::after, .button__form:hover .button__bg::after, .button__rounded:hover .button__bg::after, .button__primary:hover .button__bg::after {
+.button__small:hover .button__bg::after, .button__danger:hover .button__bg::after, .button__form:hover .button__bg::after, .button__rounded:hover .button__bg::after, .button__primary:hover .button__bg::after {
   opacity: 1;
   transition-duration: 0.01s;
   transition-delay: 0.3s;
 }
-.button__small span, .button__form span, .button__rounded span, .button__primary span {
+.button__small span, .button__danger span, .button__form span, .button__rounded span, .button__primary span {
   position: relative;
   padding: 0.8rem 2rem;
   display: flex;
@@ -87,10 +94,10 @@ h1 {
   text-align: center;
   transition: color 0.3s;
 }
-.button__small i, .button__form i, .button__rounded i, .button__primary i {
+.button__small i, .button__danger i, .button__form i, .button__rounded i, .button__primary i {
   margin-left: 10px;
 }
-.is_copy.button__small span, .is_copy.button__form span, .is_copy.button__rounded span, .is_copy.button__primary span {
+.is_copy.button__small span, .is_copy.button__danger span, .is_copy.button__form span, .is_copy.button__rounded span, .is_copy.button__primary span {
   color: #57cc99 !important;
 }
 
@@ -135,10 +142,28 @@ h1 {
   background: #242423;
 }
 .button__form span {
-  display: inline-block;
+  display: block;
 }
 .button__form:hover span {
   color: #F5CB5C;
+}
+
+.button__danger {
+  width: 100%;
+  color: #F25C54;
+  border: 1px solid #F25C54;
+}
+.button__danger .button__bg {
+  background: transparent;
+}
+.button__danger .button__bg::after, .button__danger .button__bg::before {
+  background: #F25C54;
+}
+.button__danger span {
+  display: inline-block;
+}
+.button__danger:hover span {
+  color: #242423;
 }
 
 .button__small {
@@ -258,7 +283,6 @@ h1 {
   overflow: hidden;
   z-index: 2;
   border-radius: 5px;
-  border: 1px solid #333533;
   box-shadow: 0 2px 4px 2px rgba(36, 36, 35, 0.6);
   opacity: 0;
   display: grid;
@@ -271,31 +295,26 @@ h1 {
 }
 .topbar .topbar__menu .user__dropdown .dropdown a {
   width: 100%;
-  padding: 0.8rem 2rem;
   margin: 0;
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   background: #333533;
   transition: background-color 0.3s;
 }
 .topbar .topbar__menu .user__dropdown .dropdown a:hover {
   background: #242423;
 }
-.topbar .topbar__menu .user__dropdown i {
-  padding-right: 10px;
-  margin-right: 5px;
-  position: relative;
+.topbar .topbar__menu .user__dropdown .dropdown a span {
+  padding: 0.8rem 1rem;
 }
-.topbar .topbar__menu .user__dropdown i::after {
-  width: 1px;
+.topbar .topbar__menu .user__dropdown .dropdown a i {
   height: 100%;
-  right: 0;
-  top: 0;
-  position: absolute;
-  content: "";
-  background: #CFDBD5;
+  padding: 0.8rem 1rem 1rem 1rem;
+  margin-right: 10px;
+  position: relative;
+  display: inline-block;
 }
 .topbar .topbar__menu .user__dropdown:focus-within .dropdown {
   opacity: 1;
@@ -414,7 +433,11 @@ h1 {
   align-items: center;
   justify-content: space-between;
 }
-#dashboard .password__item .password__menu .menu__icon {
+#dashboard .password__item .password__menu {
+  display: flex;
+}
+#dashboard .password__item .password__menu .menu__delete,
+#dashboard .password__item .password__menu .menu__update {
   width: 40px;
   height: 40px;
   margin-left: 20px;
@@ -424,17 +447,35 @@ h1 {
   border-radius: 99px;
   color: #E8EDDF;
   font-size: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  background: transparent;
+  transition: background 0.3s, transform 0.3s;
 }
-#dashboard .password__item .password__menu .menu__icon:hover {
-  background: #242423;
+#dashboard .password__item .password__menu .menu__delete:hover {
+  background: linear-gradient(60deg, #f27059 0%, #f25c54 100%);
+  transform: scale(1.1) translateZ(0);
+}
+#dashboard .password__item .password__menu .menu__update:hover {
+  background: linear-gradient(60deg, #00b4d8 0%, #0096c7 100%);
+  transform: scale(1.1) translateZ(0);
 }
 #dashboard .password__item textarea {
   width: 0;
   height: 0;
   overflow: hidden;
   z-index: -1;
+}
+
+#no-dashboard {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#no-dashboard img {
+  width: 300px;
+  filter: grayscale(100%);
+  margin-bottom: 20px;
 }
 
 .form__container {
@@ -540,34 +581,41 @@ fieldset {
 }
 
 .form__submit {
-  margin: 10px 0;
-  padding: 20px 0;
+  margin-top: 10px;
+  padding-top: 20px;
+  position: relative;
+}
+.form__submit::before {
+  width: 80%;
+  height: 1px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  content: "";
+  background: #242423;
+}
+
+.two__button {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+}
+
+.form__footer {
+  margin-top: 20px;
+  padding-top: 20px;
   position: relative;
   display: flex;
   justify-content: center;
 }
-.form__submit::before {
+.form__footer::before {
   width: 80%;
   height: 1px;
   top: 0;
   position: absolute;
   content: "";
   background: #242423;
-}
-.form__submit::after {
-  width: 80%;
-  height: 1px;
-  bottom: 0;
-  position: absolute;
-  content: "";
-  background: #242423;
-}
-
-small {
-  display: block;
-  text-align: center;
-  color: #242423;
-  font-size: 14px;
 }
 
 .errorlist {
