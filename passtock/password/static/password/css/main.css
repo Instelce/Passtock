@@ -1,3 +1,25 @@
+::-webkit-scrollbar {
+  padding: 0;
+  width: 8px;
+  transition: width 0.3s;
+}
+::-webkit-scrollbar:hover {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #242423;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background: #333533;
+}
+
+::selection {
+  background: #454545;
+}
+
 body {
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
@@ -368,16 +390,21 @@ small {
   justify-content: center;
   flex-direction: column;
 }
-#profile .profile__info a {
+#profile .profile__info .profile__picture {
   overflow: hidden;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   margin-bottom: 20px;
+  position: relative;
 }
 #profile .profile__info img {
-  width: 100%;
+  width: auto;
   height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 #profile .form__container {
   display: block;
@@ -411,18 +438,39 @@ small {
   padding: 20px 14%;
 }
 #dashboard .dashboard__top {
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-#dashboard .dashboard__top h1 {
-  margin-bottom: 20px;
+  position: relative;
 }
 #dashboard .dashboard__top .field {
-  width: 50%;
+  width: 100%;
+  margin: 40px 0;
+  padding: 20px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-#dashboard .dashboard__top input {
+#dashboard .dashboard__top .field::before {
+  width: 80%;
+  height: 1px;
+  content: "";
+  position: absolute;
+  top: 0;
+  background: #333533;
+}
+#dashboard .dashboard__top .field::after {
+  width: 80%;
+  height: 1px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  background: #333533;
+}
+#dashboard .dashboard__top .field input {
+  width: 50%;
   text-align: center;
 }
 #dashboard p {
@@ -467,11 +515,11 @@ small {
   transition: background 0.3s, transform 0.3s;
 }
 #dashboard .password__item .password__menu .menu__delete:hover {
-  background: linear-gradient(60deg, #f27059 0%, #f25c54 100%);
+  background: #f25c54;
   transform: scale(1.1) translateZ(0);
 }
 #dashboard .password__item .password__menu .menu__update:hover {
-  background: linear-gradient(60deg, #00b4d8 0%, #0096c7 100%);
+  background: #00b4d8;
   transform: scale(1.1) translateZ(0);
 }
 #dashboard .password__item textarea {
@@ -491,6 +539,9 @@ small {
 #no-dashboard img {
   width: 300px;
   filter: grayscale(100%);
+  margin-bottom: 20px;
+}
+#no-dashboard h1 {
   margin-bottom: 20px;
 }
 

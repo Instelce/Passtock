@@ -20,6 +20,9 @@ class Dashboard(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        for password in Password.objects.filter(owner=self.request.user):
+            context['owner'] = password.owner
+            context['id'] = password.id
         context["pass_json"] = json.dumps(list(Password.objects.filter(owner=self.request.user).values()))
         return context
 
@@ -28,15 +31,21 @@ class Dashboard(LoginRequiredMixin, ListView):
         return Password.objects.filter(owner=user).order_by('site_name')
 
 
-class PasswordDetailView(LoginRequiredMixin, DetailView):
+class PasswordDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Password
     extra_context = {'title': 'Detail'}
+
+    def test_func(self):
+        password = self.get_object()
+        if self.request.user == password.owner:
+            return True
+        return False
 
 
 class PasswordCreateView(LoginRequiredMixin, CreateView):
     model = Password
     template_name = 'password/password_create_form.html'
-    fields = ['site_name', 'email', 'password', 'image_url']
+    fields = ['site_name', 'password', 'email', 'image_url']
     extra_context = {'title': 'Create'}
 
     def get_success_url(self):
@@ -46,7 +55,8 @@ class PasswordCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        return super().form_valid(form)
+        # form.instance.email = self.request.user.email
+        return super(PasswordCreateView, self).form_valid(form)
 
 
 class PasswordUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

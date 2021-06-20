@@ -11,21 +11,3 @@ anime({
     loop: true,
     direction: "alternate",
 })
-
-// Copy function
-function copyPassword(siteName) {
-    textarea = document.getElementById('input' + siteName)
-    button = document.getElementById('button' + siteName)
-
-    textarea.select();
-    textarea.setSelectionRange(0, 99999); /* For mobile devices */
-
-    button.addEventListener('click', function () {
-        button.classList.add('is_copy')
-        setTimeout(() => {
-            button.classList.remove('is_copy')
-        }, 2000)
-    })
-
-    document.execCommand("copy");
-}
