@@ -442,6 +442,7 @@ small {
   align-items: center;
   flex-direction: column;
   position: relative;
+  margin-bottom: 40px;
 }
 #dashboard .dashboard__top .field {
   width: 100%;

@@ -20,9 +20,6 @@ class Dashboard(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        for password in Password.objects.filter(owner=self.request.user):
-            context['owner'] = password.owner
-            context['id'] = password.id
         context["pass_json"] = json.dumps(list(Password.objects.filter(owner=self.request.user).values()))
         return context
 
