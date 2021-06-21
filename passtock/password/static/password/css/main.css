@@ -54,6 +54,10 @@ small {
   flex-direction: column;
 }
 
+.mb-2 {
+  margin-bottom: 10px;
+}
+
 .button__small, .button__danger, .button__form, .button__rounded, .button__primary {
   margin: 0;
   padding: 0;
