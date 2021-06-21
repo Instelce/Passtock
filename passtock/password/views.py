@@ -24,8 +24,7 @@ class Dashboard(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Password.objects.filter(owner=user).order_by('site_name')
+        return Password.objects.filter(owner=self.request.user).order_by('site_name')
 
 
 class PasswordDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):

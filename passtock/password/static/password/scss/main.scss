@@ -13,12 +13,7 @@ $padding-vertical: 14%;
 // Main Style
 ::-webkit-scrollbar {
   padding: 0;
-  width: 8px;
-  transition: width 0.3s;
-
-  &:hover {
-    width: 12px;
-  }
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -67,6 +62,9 @@ small {
   height: auto;
   position: relative;
   padding: 20px $padding-vertical;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 // Button

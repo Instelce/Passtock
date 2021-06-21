@@ -5,13 +5,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name="register"),
+    path('activate/<uidb64>/<token>', user_views.activate,
+         name="activate"),
+    path('email-send/', user_views.email_send, name="email-send"),
+    path('email-validate/', user_views.activation_email, name="email-validate"),
     path('profile/', user_views.profile, name="profile"),
-    path('login/', user_views.Login.as_view(template_name='users/login.html', extra_context={'title': 'Login'}), name="login"),
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html', extra_context={'title': 'Logout'}), name="logout"),
+    path('login/', user_views.Login.as_view(template_name='users/login.html', extra_context={'title': 'Login'}),
+         name="login"),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html', extra_context={'title': 'Logout'}),
+         name="logout"),
     path('', include('password.urls'))
 ]
 
