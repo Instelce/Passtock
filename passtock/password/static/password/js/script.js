@@ -1,3 +1,4 @@
+// Home Bubble
 anime({
     targets: '#bubble-svg path',
     d: [
@@ -11,3 +12,13 @@ anime({
     loop: true,
     direction: "alternate",
 })
+
+
+// Topbar Toggle
+const topbarToggle = document.querySelector('.topbar__toggle')
+const topbarMenu = document.querySelector('.topbar__menu')
+
+topbarToggle.addEventListener('click', () => {
+    topbarMenu.classList.toggle('is-visible')
+})
+

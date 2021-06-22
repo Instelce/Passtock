@@ -34,6 +34,7 @@ p {
 
 h1 {
   font-size: 2rem;
+  text-align: center;
   color: #CFDBD5;
   font-weight: 700;
 }
@@ -54,11 +55,11 @@ small {
   flex-direction: column;
 }
 
-.mb-2 {
-  margin-bottom: 10px;
+.mt-2 {
+  margin-top: 10px;
 }
 
-.button__small, .button__danger, .button__form, .button__rounded, .button__primary {
+.button__form, .button__small, .button__danger, .button__rounded, .button__primary {
   margin: 0;
   padding: 0;
   position: relative;
@@ -71,7 +72,7 @@ small {
   background: none;
   border-radius: 5px;
 }
-.button__small .button__bg, .button__danger .button__bg, .button__form .button__bg, .button__rounded .button__bg, .button__primary .button__bg {
+.button__form .button__bg, .button__small .button__bg, .button__danger .button__bg, .button__rounded .button__bg, .button__primary .button__bg {
   top: 0;
   left: 0;
   position: absolute;
@@ -81,11 +82,11 @@ small {
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
 }
-.button__small .button__bg::before, .button__danger .button__bg::before, .button__form .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before, .button__small .button__bg::after, .button__danger .button__bg::after, .button__form .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
+.button__form .button__bg::before, .button__small .button__bg::before, .button__danger .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before, .button__form .button__bg::after, .button__small .button__bg::after, .button__danger .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
   content: "";
   position: absolute;
 }
-.button__small .button__bg::before, .button__danger .button__bg::before, .button__form .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before {
+.button__form .button__bg::before, .button__small .button__bg::before, .button__danger .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before {
   width: 110%;
   height: 0;
   padding-bottom: 110%;
@@ -94,7 +95,7 @@ small {
   border-radius: 50%;
   transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1);
 }
-.button__small .button__bg::after, .button__danger .button__bg::after, .button__form .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
+.button__form .button__bg::after, .button__small .button__bg::after, .button__danger .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
   top: 0;
   left: 0;
   width: 100%;
@@ -102,16 +103,16 @@ small {
   opacity: 0;
   transition: opacity 0.3s;
 }
-.button__small:hover .button__bg::before, .button__danger:hover .button__bg::before, .button__form:hover .button__bg::before, .button__rounded:hover .button__bg::before, .button__primary:hover .button__bg::before {
+.button__form:hover .button__bg::before, .button__small:hover .button__bg::before, .button__danger:hover .button__bg::before, .button__rounded:hover .button__bg::before, .button__primary:hover .button__bg::before {
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
   transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
 }
-.button__small:hover .button__bg::after, .button__danger:hover .button__bg::after, .button__form:hover .button__bg::after, .button__rounded:hover .button__bg::after, .button__primary:hover .button__bg::after {
+.button__form:hover .button__bg::after, .button__small:hover .button__bg::after, .button__danger:hover .button__bg::after, .button__rounded:hover .button__bg::after, .button__primary:hover .button__bg::after {
   opacity: 1;
   transition-duration: 0.01s;
   transition-delay: 0.3s;
 }
-.button__small span, .button__danger span, .button__form span, .button__rounded span, .button__primary span {
+.button__form span, .button__small span, .button__danger span, .button__rounded span, .button__primary span {
   position: relative;
   padding: 0.8rem 2rem;
   display: flex;
@@ -119,10 +120,10 @@ small {
   text-align: center;
   transition: color 0.3s;
 }
-.button__small i, .button__danger i, .button__form i, .button__rounded i, .button__primary i {
+.button__form i, .button__small i, .button__danger i, .button__rounded i, .button__primary i {
   margin-left: 10px;
 }
-.is_copy.button__small span, .is_copy.button__danger span, .is_copy.button__form span, .is_copy.button__rounded span, .is_copy.button__primary span {
+.is_copy.button__form span, .is_copy.button__small span, .is_copy.button__danger span, .is_copy.button__rounded span, .is_copy.button__primary span {
   color: #57cc99 !important;
 }
 
@@ -152,24 +153,6 @@ small {
   background: #242423;
 }
 .button__rounded:hover span {
-  color: #F5CB5C;
-}
-
-.button__form {
-  width: 100%;
-  color: #242423;
-  border: 1px solid #242423;
-}
-.button__form .button__bg {
-  background: transparent;
-}
-.button__form .button__bg::after, .button__form .button__bg::before {
-  background: #242423;
-}
-.button__form span {
-  display: block;
-}
-.button__form:hover span {
   color: #F5CB5C;
 }
 
@@ -346,6 +329,32 @@ small {
   transform: translateY(0%);
   pointer-events: auto;
 }
+.topbar .topbar__toggle {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 105;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.topbar .topbar__toggle span,
+.topbar .topbar__toggle span::after,
+.topbar .topbar__toggle span::before {
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  content: "";
+  background: #E8EDDF;
+}
+.topbar .topbar__toggle span::before {
+  transform: translateY(-12px);
+}
+.topbar .topbar__toggle span::after {
+  transform: translateY(12px);
+}
 
 #home {
   height: 90vh;
@@ -354,7 +363,9 @@ small {
   align-items: center;
 }
 #home h1 {
+  max-width: 700px;
   font-size: 3rem;
+  text-align: left;
   color: #CFDBD5;
   margin-bottom: 20px;
 }
@@ -561,6 +572,75 @@ small {
   margin-bottom: 20px;
 }
 
+@media only screen and (max-width: 500px) {
+  small {
+    color: #333533;
+  }
+
+  .topbar .topbar__menu {
+    width: 100%;
+    padding: 20px 0;
+    top: 5vh;
+    left: 0;
+    z-index: 100;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: #242423;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .topbar .topbar__menu.is-visible {
+    transform: translateY(5vh);
+    opacity: 1;
+  }
+  .topbar .topbar__menu.is-visible a {
+    pointer-events: auto;
+  }
+  .topbar .topbar__menu a {
+    margin-left: 0;
+    margin-bottom: 20px;
+    display: block;
+    pointer-events: none;
+  }
+  .topbar .topbar__toggle {
+    display: flex;
+  }
+
+  #home h1 {
+    font-size: 2rem;
+    max-width: 500px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  #dashboard .password__item {
+    display: flex;
+    flex-direction: column;
+  }
+  #dashboard .password__item .password__sitename {
+    margin-bottom: 20px;
+  }
+  #dashboard .password__item .password__right {
+    display: flex;
+    flex-direction: column;
+  }
+  #dashboard .password__item .password__menu {
+    margin-top: 20px;
+  }
+  #dashboard .password__item .password__menu a {
+    margin: 0 5px 0 5px !important;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .bubble {
+    display: none;
+  }
+
+  #profile form {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .form__container {
   width: 100%;
   height: 90vh;
@@ -715,6 +795,24 @@ fieldset {
   background: #242423;
 }
 
+.button__form {
+  width: 100%;
+  color: #242423;
+  border: 1px solid #242423;
+}
+.button__form .button__bg {
+  background: transparent;
+}
+.button__form .button__bg::after, .button__form .button__bg::before {
+  background: #242423;
+}
+.button__form span {
+  display: block;
+}
+.button__form:hover span {
+  color: #F5CB5C;
+}
+
 .errorlist {
   margin-top: 10px;
   color: #f25c54;
@@ -722,6 +820,33 @@ fieldset {
   font-weight: 300;
 }
 
+@media only screen and (max-width: 500px) {
+  .form__container {
+    display: block;
+  }
+  .form__container form {
+    padding: 0;
+    background: #242423;
+    border-radius: 0;
+  }
+  .form__container .form__submit::before,
+.form__container .form__footer::before {
+    background: #333533;
+  }
+  .form__container .button__form {
+    color: #E8EDDF;
+    border: 1px solid #333533;
+  }
+  .form__container .button__form .button__bg {
+    background: transparent;
+  }
+  .form__container .button__form .button__bg::after, .form__container .button__form .button__bg::before {
+    background: #333533;
+  }
+  .form__container .button__form:hover span {
+    color: #F5CB5C;
+  }
+}
 .notification {
   padding: 20px 40px;
   bottom: 20px;

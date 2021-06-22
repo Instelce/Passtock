@@ -14,9 +14,9 @@
                 <label for="password1">Password</label>
                 {{ form.password }}
                 {{ form.password.errors }}
+                <small class="mt-2"><a href="{% url 'password_reset' %}">Forgot Password ?</a></small>
             </san>
             <fieldset class="form__submit">
-                <small class="mb-2"><a href="{% url 'password_reset' %}">Forgot Password ?</a></small>
                 <button class="button__form" type="submit">
                     <div class="button__bg"></div>
                     <span>Login</span>

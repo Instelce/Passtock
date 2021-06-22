@@ -47,6 +47,7 @@ p {
 
 h1 {
   font-size: 2rem;
+  text-align: center;
   color: $color-timberwolf;
   font-weight: 700;
 }
@@ -67,8 +68,8 @@ small {
   flex-direction: column;
 }
 
-.mb-2 {
-  margin-bottom: 10px;
+.mt-2 {
+  margin-top: 10px;
 }
 
 // Button
@@ -188,30 +189,6 @@ small {
     &::before {
       background: $color-erie-black;
     }
-  }
-
-  &:hover span {
-    color: $color-maize-crayola
-  }
-}
-
-.button__form {
-  @extend %button;
-  width: 100%;
-  color: $color-erie-black;
-  border: 1px solid $color-erie-black;
-
-  .button__bg {
-    background: transparent;
-
-    &::after,
-    &::before {
-      background: $color-erie-black;
-    }
-  }
-
-  span {
-    display: block;
   }
 
   &:hover span {
@@ -440,6 +417,39 @@ small {
       }
     }
   }
+
+  .topbar__toggle {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 105;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    span,
+    span::after,
+    span::before {
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      content: "";
+      background: $color-alabaster;
+    }
+
+    span::before {
+      transform: translateY(-12px);
+    }
+
+    span::after {
+      transform: translateY(12px);
+    }
+
+  }
 }
 
 // Home Page Style
@@ -451,7 +461,9 @@ small {
   align-items: center;
 
   h1 {
+    max-width: 700px;
     font-size: 3rem;
+    text-align: left;
     color: $color-timberwolf;
     margin-bottom: 20px;
   }
@@ -700,6 +712,101 @@ small {
   img {
     width: 200px;
     margin-bottom: 20px;
+  }
+}
+
+// Media Query
+@media only screen and (max-width: 320px) {
+  $padding-vertical: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  small {
+    color: $color-jet;
+  }
+
+  .topbar {
+    .topbar__menu {
+      width: 100%;
+      padding: 20px 0;
+      top: 5vh;
+      left: 0;
+      z-index: 100;
+      position: absolute;
+
+      display: flex;
+      flex-direction: column;
+      background: $color-erie-black;
+
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+
+      &.is-visible {
+        transform: translateY(5vh);
+        opacity: 1;
+
+        a {
+          pointer-events: auto;
+        }
+      }
+
+      a {
+        margin-left: 0;
+        margin-bottom: 20px;
+        display: block;
+        pointer-events: none;
+      }
+    }
+
+    .topbar__toggle {
+      display: flex;
+    }
+  }
+
+  #home {
+    h1 {
+      font-size: 2rem;
+      max-width: 500px;
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  #dashboard {
+    .password__item {
+      display: flex;
+      flex-direction: column;
+
+      .password__sitename {
+        margin-bottom: 20px;
+      }
+
+      .password__right {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .password__menu {
+        margin-top: 20px;
+
+        a {
+          margin: 0 5px 0 5px !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .bubble {
+    display: none;
+  }
+
+  #profile {
+    form {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 

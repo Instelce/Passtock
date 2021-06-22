@@ -166,6 +166,29 @@ fieldset {
   }
 }
 
+.button__form {
+  @extend %button;
+  width: 100%;
+  color: $color-erie-black;
+  border: 1px solid $color-erie-black;
+
+  .button__bg {
+    background: transparent;
+
+    &::after,
+    &::before {
+      background: $color-erie-black;
+    }
+  }
+
+  span {
+    display: block;
+  }
+
+  &:hover span {
+    color: $color-maize-crayola
+  }
+}
 
 // Error Messages
 .errorlist {
@@ -173,4 +196,41 @@ fieldset {
   color: #f25c54;
   font-size: 14px;
   font-weight: 300;
+}
+
+
+// Media Query 
+@media only screen and (max-width: 500px) {
+  .form__container {
+    display: block;
+
+    form {
+      padding: 0;
+      background: $color-erie-black;
+      border-radius: 0;
+    }
+
+    .form__submit::before,
+    .form__footer::before{
+      background: $color-jet;
+    }
+
+    .button__form {
+      color: $color-alabaster;
+      border: 1px solid $color-jet;
+
+      .button__bg {
+        background: transparent;
+
+        &::after,
+        &::before {
+          background: $color-jet;
+        }
+      }
+
+      &:hover span {
+        color: $color-maize-crayola
+      }
+    }
+  }
 }
