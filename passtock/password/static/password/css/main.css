@@ -47,7 +47,7 @@ small {
 }
 
 .container {
-  height: auto;
+  height: 90vh;
   position: relative;
   padding: 20px 14%;
   display: flex;
@@ -190,15 +190,6 @@ small {
 }
 .button__small:hover span {
   color: #F5CB5C;
-}
-
-.transition-fade {
-  transition: 0.4s;
-  opacity: 1;
-}
-
-html.is-animating .transition-fade {
-  opacity: 0;
 }
 
 .link {
@@ -405,6 +396,7 @@ html.is-animating .transition-fade {
 }
 
 #profile {
+  height: 90vh;
   padding: 20px 14%;
 }
 #profile .profile__info {
@@ -570,15 +562,35 @@ html.is-animating .transition-fade {
 }
 
 #detail {
+  height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 20px 14%;
 }
 #detail img {
   width: 200px;
   margin-bottom: 20px;
+}
+
+#privacy-policy {
+  min-height: 90vh;
+  padding: 20px 30%;
+}
+#privacy-policy h1 {
+  margin-bottom: 20px;
+}
+
+footer {
+  width: 100%;
+  padding: 20px 14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+footer p {
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 500px) {

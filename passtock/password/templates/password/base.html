@@ -80,6 +80,13 @@
 
     {% block content %}{% endblock content %}
 
+    <footer>
+        <ul>
+            <li><small><a href="{% url 'password:privacy-policy' %}" class="link">Privacy Policy</a></small></li>
+        </ul>
+        <p>&copy; Passtock 2021</p>
+    </footer>
+
     {# Script #}
     {% block script %}
     {% endblock script %}

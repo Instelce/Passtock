@@ -60,7 +60,7 @@ small {
 }
 
 .container {
-  height: auto;
+  height: 90vh;
   position: relative;
   padding: 20px $padding-vertical;
   display: flex;
@@ -242,16 +242,6 @@ small {
   &:hover span {
     color: $color-maize-crayola
   }
-}
-
-// Swup
-.transition-fade {
-  transition: 0.4s;
-  opacity: 1;
-}
-
-html.is-animating .transition-fade {
-  opacity: 0;
 }
 
 // Link
@@ -509,6 +499,7 @@ html.is-animating .transition-fade {
 
 // Profile Page Style
 #profile {
+  height: 90vh;
   padding: 20px $padding-vertical;
 
   .profile__info {
@@ -712,15 +703,39 @@ html.is-animating .transition-fade {
 
 // Detail
 #detail {
+  height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 20px $padding-vertical;
 
   img {
     width: 200px;
     margin-bottom: 20px;
+  }
+}
+
+// Privacy policy Page Style
+#privacy-policy {
+  min-height: 90vh;
+  padding: 20px 30%;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+// Footer
+footer {
+  width: 100%;
+  padding: 20px $padding-vertical;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    margin-top: 10px;
   }
 }
 

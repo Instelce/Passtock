@@ -14,6 +14,10 @@ def home(request):
     return render(request, 'password/home.html')
 
 
+def privacy_policy(request):
+    return render(request, 'password/privacy_policy.html', {'title': 'Privacy Policy'})
+
+
 def handler404(request, exception):
     return render(request, 'password/404.html', RequestContext(request))
 
