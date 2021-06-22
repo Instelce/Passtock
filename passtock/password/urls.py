@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import *
 
+handler404 = 'password.views.handler404'
+handler500 = 'password.views.handler500'
+
 app_name = 'password'
 urlpatterns = [
     path('<str:username>/dashboard/', Dashboard.as_view(), name="dashboard"),

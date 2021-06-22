@@ -5,12 +5,21 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.forms.models import model_to_dict
+from django.template import RequestContext
 from .models import Password
 import json
 
 
 def home(request):
     return render(request, 'password/home.html')
+
+
+def handler404(request, exception):
+    return render(request, 'password/404.html', RequestContext(request))
+
+
+def handler500(request):
+    return render(request, 'password/500.html', RequestContext(request))
 
 
 class Dashboard(LoginRequiredMixin, ListView):

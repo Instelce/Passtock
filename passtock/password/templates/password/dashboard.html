@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <section id="dashboard">
+    <section id="dashboard" class="transition-fade">
         {% if passwords %}
             <div class="dashboard__top">
                 <h1>Your password{{ passwords.count|pluralize }}</h1>
