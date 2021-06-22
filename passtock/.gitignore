@@ -1,0 +1,4 @@
+env/
+passtock/__pycache__
+password/__pycache__/
+password/migrations/__pycache__/

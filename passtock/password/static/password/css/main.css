@@ -450,6 +450,7 @@ small {
 }
 
 #dashboard {
+  min-height: 90vh;
   padding: 20px 14%;
 }
 #dashboard .dashboard__top {
