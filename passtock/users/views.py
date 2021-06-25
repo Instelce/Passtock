@@ -20,23 +20,24 @@ def register(request):
         form = UserRegisterForm(request.POST)
 
         if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            message = render_to_string('users/acc_active_email.html', {
-                'user': user,
-                'domain': current_site,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user)
-            })
-            mail_subject = f'Activate your account on {current_site}'
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(mail_subject, message, to=[to_email])
-            email.send()
+            form.save()
+            # user = form.save(commit=False)
+            # user.is_active = False
+            # user.save()
+            # current_site = get_current_site(request)
+            # message = render_to_string('users/acc_active_email.html', {
+            #     'user': user,
+            #     'domain': current_site,
+            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            #     'token': account_activation_token.make_token(user)
+            # })
+            # mail_subject = f'Activate your account on {current_site}'
+            # to_email = form.cleaned_data.get('email')
+            # email = EmailMessage(mail_subject, message, to=[to_email])
+            # email.send()
             username = form.cleaned_data.get('username')
             messages.success(request, f'{username} account has been created !')
-            return redirect('email-send')
+            return redirect('login')
     else:
         form = UserRegisterForm()
 

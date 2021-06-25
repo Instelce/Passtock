@@ -3,9 +3,12 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
 from users import views as user_views
 
 urlpatterns = [
+    path('media/<path>/', serve, {'document_root': settings.MEDIA_ROOT}),
+    path('static/<path>/', serve, {'document_root': settings.STATIC_ROOT}),
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name="register"),
     path('activate/<uidb64>/<token>', user_views.activate,
@@ -30,7 +33,4 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name="password_reset_complete"),
     path('', include('password.urls'))
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
