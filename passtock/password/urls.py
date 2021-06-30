@@ -12,5 +12,6 @@ urlpatterns = [
     path('<str:username>/password/update/<int:pk>/', PasswordUpdateView.as_view(extra_context={'title': 'Update'}), name="update"),
     path('<str:username>/password/delete/<int:pk>/', PasswordDeleteView.as_view(extra_context={'title': 'Delete'}), name="delete"),
     path('privacy-policy/', privacy_policy, name="privacy-policy"),
+    path('generator/', generator, name="generator"),
     path('', home, name="home")
 ]

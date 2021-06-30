@@ -59,7 +59,7 @@ small {
   margin-top: 10px;
 }
 
-.button__form, .button__small, .button__danger, .button__rounded, .button__primary {
+.button__form, .button__small, .button__clipboard, .button__danger, .button__rounded, .button__primary {
   margin: 0;
   padding: 0;
   position: relative;
@@ -72,7 +72,7 @@ small {
   background: none;
   border-radius: 5px;
 }
-.button__form .button__bg, .button__small .button__bg, .button__danger .button__bg, .button__rounded .button__bg, .button__primary .button__bg {
+.button__form .button__bg, .button__small .button__bg, .button__clipboard .button__bg, .button__danger .button__bg, .button__rounded .button__bg, .button__primary .button__bg {
   top: 0;
   left: 0;
   position: absolute;
@@ -82,11 +82,11 @@ small {
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
 }
-.button__form .button__bg::before, .button__small .button__bg::before, .button__danger .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before, .button__form .button__bg::after, .button__small .button__bg::after, .button__danger .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
+.button__form .button__bg::before, .button__small .button__bg::before, .button__clipboard .button__bg::before, .button__danger .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before, .button__form .button__bg::after, .button__small .button__bg::after, .button__clipboard .button__bg::after, .button__danger .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
   content: "";
   position: absolute;
 }
-.button__form .button__bg::before, .button__small .button__bg::before, .button__danger .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before {
+.button__form .button__bg::before, .button__small .button__bg::before, .button__clipboard .button__bg::before, .button__danger .button__bg::before, .button__rounded .button__bg::before, .button__primary .button__bg::before {
   width: 110%;
   height: 0;
   padding-bottom: 110%;
@@ -95,7 +95,7 @@ small {
   border-radius: 50%;
   transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 1);
 }
-.button__form .button__bg::after, .button__small .button__bg::after, .button__danger .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
+.button__form .button__bg::after, .button__small .button__bg::after, .button__clipboard .button__bg::after, .button__danger .button__bg::after, .button__rounded .button__bg::after, .button__primary .button__bg::after {
   top: 0;
   left: 0;
   width: 100%;
@@ -103,16 +103,16 @@ small {
   opacity: 0;
   transition: opacity 0.3s;
 }
-.button__form:hover .button__bg::before, .button__small:hover .button__bg::before, .button__danger:hover .button__bg::before, .button__rounded:hover .button__bg::before, .button__primary:hover .button__bg::before {
+.button__form:hover .button__bg::before, .button__small:hover .button__bg::before, .button__clipboard:hover .button__bg::before, .button__danger:hover .button__bg::before, .button__rounded:hover .button__bg::before, .button__primary:hover .button__bg::before {
   transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
   transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
 }
-.button__form:hover .button__bg::after, .button__small:hover .button__bg::after, .button__danger:hover .button__bg::after, .button__rounded:hover .button__bg::after, .button__primary:hover .button__bg::after {
+.button__form:hover .button__bg::after, .button__small:hover .button__bg::after, .button__clipboard:hover .button__bg::after, .button__danger:hover .button__bg::after, .button__rounded:hover .button__bg::after, .button__primary:hover .button__bg::after {
   opacity: 1;
   transition-duration: 0.01s;
   transition-delay: 0.3s;
 }
-.button__form span, .button__small span, .button__danger span, .button__rounded span, .button__primary span {
+.button__form span, .button__small span, .button__clipboard span, .button__danger span, .button__rounded span, .button__primary span {
   position: relative;
   padding: 0.8rem 2rem;
   display: flex;
@@ -120,10 +120,10 @@ small {
   text-align: center;
   transition: color 0.3s;
 }
-.button__form i, .button__small i, .button__danger i, .button__rounded i, .button__primary i {
+.button__form i, .button__small i, .button__clipboard i, .button__danger i, .button__rounded i, .button__primary i {
   margin-left: 10px;
 }
-.is_copy.button__form span, .is_copy.button__small span, .is_copy.button__danger span, .is_copy.button__rounded span, .is_copy.button__primary span {
+.is_copy.button__form span, .is_copy.button__small span, .is_copy.button__clipboard span, .is_copy.button__danger span, .is_copy.button__rounded span, .is_copy.button__primary span {
   color: #57cc99 !important;
 }
 
@@ -172,6 +172,30 @@ small {
 }
 .button__danger:hover span {
   color: #242423;
+}
+
+.button__clipboard {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #CFDBD5;
+  border: 1px solid #242423;
+}
+.button__clipboard .button__bg {
+  background: transparent;
+}
+.button__clipboard .button__bg::after, .button__clipboard .button__bg::before {
+  background: #242423;
+}
+.button__clipboard span {
+  padding: 0.8rem 1rem;
+}
+.button__clipboard span i {
+  margin: 0;
+}
+.button__clipboard:hover span {
+  color: #F5CB5C;
 }
 
 .button__small {
@@ -775,6 +799,15 @@ fieldset {
   color: #f3db97;
 }
 
+.checkbox {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.checkbox label {
+  color: #242423;
+}
+
 .field.not-required label::after {
   content: none;
 }
@@ -840,6 +873,40 @@ fieldset {
   color: #f25c54;
   font-size: 14px;
   font-weight: 300;
+}
+
+.generator .number {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.generator .number label {
+  color: #242423;
+}
+.generator .number input {
+  padding: 0.4rem 1rem;
+  outline: none;
+  background: #333533;
+  border: 1px solid #242423;
+  border-radius: 5px;
+  text-align: center;
+  color: #F5CB5C;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+.generator .number input:hover {
+  border: 1px solid #f3db97;
+}
+.generator .number input:focus {
+  border: 1px solid #F5CB5C;
+}
+.generator .number input:focus:invalid {
+  border: 1px solid #f25c54;
+}
+.generator .number input::-webkit-outer-spin-button, .generator .number input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @media only screen and (max-width: 500px) {

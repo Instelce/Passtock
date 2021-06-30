@@ -220,6 +220,37 @@ small {
   }
 }
 
+.button__clipboard {
+  @extend %button;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-timberwolf;
+  border: 1px solid $color-erie-black;
+
+  .button__bg {
+    background: transparent;
+
+    &::after,
+    &::before {
+      background: $color-erie-black;
+    }
+  }
+
+  span {
+    padding: 0.8rem 1rem;
+
+    i {
+      margin: 0;
+    }
+  }
+
+  &:hover span {
+    color: $color-maize-crayola
+  }
+}
+
 .button__small {
   @extend %button;
   color: $color-timberwolf;

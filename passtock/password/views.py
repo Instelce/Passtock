@@ -14,6 +14,10 @@ def home(request):
     return render(request, 'password/home.html')
 
 
+def generator(request):
+    return render(request, 'password/generator.html', {'title': 'Generator'})
+
+
 def privacy_policy(request):
     return render(request, 'password/privacy_policy.html', {'title': 'Privacy Policy'})
 

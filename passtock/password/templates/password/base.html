@@ -10,7 +10,8 @@
 
     {# Font Link #}
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 
     {# CSS Link #}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css">
@@ -23,77 +24,81 @@
     {% endif %}
 </head>
 <body>
-    <nav class="topbar">
-        {% if user.is_authenticated %}
-            <a href="{% url 'password:dashboard' user %}" class="topbar__brand">Passtock</a>
-        {% else %}
-            <a href="{% url 'password:home' %}" class="topbar__brand">Passtock</a>
-        {% endif %}
-
-        <ul class="topbar__menu">
-            {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'password:create' %}" class="button__small">
-                        <div class="button__bg"></div>
-                        <span>Create password</span>
-                    </a>
-                </li>
-                <li class="user__dropdown">
-                    <a href="#"><img src="{{ user.profile.image.url }}"></a>
-                    <ul class="dropdown">
-                        <li><a href="{% url 'password:dashboard' user %}">
-                            <i class="fas fa-columns"></i>
-                            <span>Dashboard</span>
-                        </a></li>
-                        <li><a href="{% url 'profile' %}">
-                            <i class="fas fa-user-alt"></i>
-                            <span>Profile</span>
-                        </a></li>
-                        <li><a href="{% url 'logout' %}">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Logout</span>
-                        </a></li>
-                    </ul>
-                </li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li>
-                    <a href="{% url 'register' %}" class="button__small">
-                        <div class="button__bg"></div>
-                        <span>Sign Up</span>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-
-        <div class="topbar__toggle">
-            <span></span>
-        </div>
-    </nav>
-
-
-    {% if messages %}
-        {% for message in messages %}
-            <div class="notification mes-{{ message.tags }}">
-                <span>{{ message }}</span>
-            </div>
-        {% endfor %}
+<nav class="topbar">
+    {% if user.is_authenticated %}
+        <a href="{% url 'password:dashboard' user %}" class="topbar__brand">Passtock</a>
+    {% else %}
+        <a href="{% url 'password:home' %}" class="topbar__brand">Passtock</a>
     {% endif %}
 
-    {% block content %}{% endblock content %}
+    <ul class="topbar__menu">
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'password:generator' %}">Generator</a></li>
+            <li>
+                <a href="{% url 'password:create' %}" class="button__small">
+                    <div class="button__bg"></div>
+                    <span>Create password</span>
+                </a>
+            </li>
+            <li class="user__dropdown">
+                <a href="#"><img src="{{ user.profile.image.url }}"></a>
+                <ul class="dropdown">
+                    <li><a href="{% url 'password:dashboard' user %}">
+                        <i class="fas fa-columns"></i>
+                        <span>Dashboard</span>
+                    </a></li>
+                    <li><a href="{% url 'profile' %}">
+                        <i class="fas fa-user-alt"></i>
+                        <span>Profile</span>
+                    </a></li>
+                    <li><a href="{% url 'logout' %}">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a></li>
+                </ul>
+            </li>
+        {% else %}
+            <li><a href="{% url 'password:generator' %}">Generator</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li>
+                <a href="{% url 'register' %}" class="button__small">
+                    <div class="button__bg"></div>
+                    <span>Sign Up</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
 
-    <footer>
-        <ul>
-            <li><small><a href="{% url 'password:privacy-policy' %}" class="link">Privacy Policy</a></small></li>
-        </ul>
-        <p>&copy; Passtock 2021</p>
-    </footer>
+    <div class="topbar__toggle">
+        <span></span>
+    </div>
+</nav>
 
-    {# Script #}
-    {% block script %}
-    {% endblock script %}
-    <script src="https://kit.fontawesome.com/69fa013398.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{% static 'password/js/script.js' %}"></script>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="notification mes-{{ message.tags }}">
+            <span>{{ message }}</span>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% block content %}{% endblock content %}
+
+<footer>
+    <ul>
+        <li><small><a href="{% url 'password:privacy-policy' %}" class="link">Privacy Policy</a></small></li>
+    </ul>
+    <p>&copy; Passtock 2021</p>
+</footer>
+
+{# Script #}
+{% block script %}
+{% endblock script %}
+<script src="https://kit.fontawesome.com/69fa013398.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+        integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'password/js/script.js' %}"></script>
 </body>
 </html>
