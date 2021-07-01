@@ -484,6 +484,9 @@ small {
   position: relative;
   margin-bottom: 40px;
 }
+#dashboard .dashboard__top p {
+  margin-bottom: 20px;
+}
 #dashboard .dashboard__top .field {
   width: 100%;
   margin: 40px 0;

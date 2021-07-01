@@ -1,13 +1,32 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.forms.models import model_to_dict
 from django.template import RequestContext
+from django.template.loader import get_template
+from django.conf import settings
+from xhtml2pdf import pisa
+from io import BytesIO
 from .models import Password
+from .helpers import *
 import json
+import uuid
+
+
+def save_pdf(template_src, context_dict={}):
+    template = get_template(template_src)
+    html = template.render(context_dict)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode('UTF-8')), result)
+
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return None
 
 
 def home(request):
@@ -28,6 +47,16 @@ def handler404(request, exception):
 
 def handler500(request):
     return render(request, 'password/500.html', RequestContext(request))
+
+
+class ViewPDF(View):
+    def get(self, request, username):
+        data = {
+            'passwords': Password.objects.filter(owner=self.request.user).order_by('site_name'),
+            'user': self.request.user
+        }
+        pdf = save_pdf("password/pdf.html", data)
+        return HttpResponse(pdf, content_type='application/pdf')
 
 
 class Dashboard(LoginRequiredMixin, ListView):

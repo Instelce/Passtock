@@ -1,0 +1,62 @@
+<head>
+    <title>{{ user }} PDF - Passtock</title>
+
+    <style>
+        @page {
+            size: a4 portrait;
+
+            @frame header_frame {
+                -pdf-frame-content: header;
+                left: 50pt;
+                width: 512pt;
+                top: 50pt;
+                height: 40pt;
+            }
+
+            @frame content_frame {
+                left: 50pt;
+                width: 512pt;
+                top: 90pt;
+                height: 632pt;
+            }
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div id="header">
+    <h1>{{ user }} Password{{ passwords.count|pluralize }}</h1>
+</div>
+
+<hr>
+
+<table>
+    <tr>
+        <th>Site Name</th>
+        <th>Email</th>
+        <th>Password</th>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+
+    {% for password in passwords %}
+        <tr>
+            <td>{{ password.site_name }}</td>
+            <td>{{ password.email }}</td>
+            <td>{{ password.password }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<p><strong>Total password : {{ passwords.count }}</strong></p>
+
+</body>

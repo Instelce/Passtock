@@ -7,6 +7,10 @@
             <div class="dashboard__top">
                 <h1>Your password{{ passwords.count|pluralize }}</h1>
                 <p>You have {{ passwords.count }} password{{ passwords.count|pluralize }}</p>
+                <a class="button__small" href="{% url 'password:view-pdf' user.username %}" target="_blank">
+                    <div class="button__bg"></div>
+                    <span>Download pdf</span>
+                </a>
                 {# <div class="field">  #}
                 {#    <input id="search" type="search" placeholder="Search password">  #}
                 {# </div> #}
